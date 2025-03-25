@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English to Marathi Translation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
+            margin-bottom: 20px;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .error {
+            color: red;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>English to Marathi Translation</h1>
+
+        <textarea id="englishText" placeholder="Enter English text here..."></textarea>
+
+        <br>
+
+        <button id="translateButton">Translate</button>
+
+        <div class="result" id="result"></div>
+        <div class="error" id="error"></div>
+    </div>
+
+    <script>
+        // Simple English to Marathi translation dictionary (for demonstration)
+        const translationDict = {
+            "hello": "नमस्कार",
+            "good morning": "शुभ सकाळ",
+            "good night": "शुभ रात्री",
+            "how are you": "तुम्ही कसे आहात?",
+            "thank you": "धन्यवाद",
+            "please": "कृपया",
+            "yes": "होय",
+            "no": "नाही",
+            "welcome": "स्वागत आहे",
+            "goodbye": "नमस्कार",
+            "love": "प्रेम",
+            "friend": "मित्र",
+            "family": "कुटुंब",
+            "good": "चांगला",
+            "bad": "वाईट",
+            "eat": "खाणे",
+            "sleep": "झोप",
+            "work": "काम"
+        };
+
+        // Translate function
+        function translateToMarathi() {
+            const englishText = document.getElementById("englishText").value.trim().toLowerCase();
+            const resultDiv = document.getElementById("result");
+            const errorDiv = document.getElementById("error");
+
+            // Clear previous error message
+            errorDiv.textContent = '';
+
+            // Translate word by word (based on spaces)
+            const words = englishText.split(" ");
+            let translatedText = "";
+
+            words.forEach((word, index) => {
+                if (translationDict[word]) {
+                    translatedText += translationDict[word] + " ";
+                } else {
+                    translatedText += word + " ";  // Keep the word as is if not found in the dictionary
+                }
+            });
+
+            // Display the translated text
+            if (translatedText.trim() !== "") {
+                resultDiv.textContent = translatedText.trim(); // Display translated text
+                resultDiv.classList.add('success');
+            } else {
+                errorDiv.textContent = "Translation not found. Please try another word or phrase."; // Show error message
+            }
+        }
+
+        // Event listener for the translate button
+        document.getElementById("translateButton").addEventListener("click", translateToMarathi);
+    </script>
+</body>
+</html>

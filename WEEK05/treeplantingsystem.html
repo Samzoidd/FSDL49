@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Watering System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #e9f7f6;
+        }
+
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .plants-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .plant {
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 10px;
+            width: 120px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .plant-name {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .plant-status {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        button:active {
+            background-color: #367a37;
+        }
+
+        .message {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .success {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Plant Watering System</h1>
+        
+        <div id="plants-container" class="plants-container">
+            <!-- Plant items will be dynamically added here -->
+        </div>
+        
+        <button id="checkMoistureButton">Check Moisture Levels</button>
+        <button id="waterPlantsButton">Water Plants</button>
+        
+        <div id="message" class="message"></div>
+    </div>
+
+    <script>
+        // Mock plant data
+        const plants = [
+            { id: 1, name: 'Cactus', moistureLevel: 40, needsWatering: false },
+            { id: 2, name: 'Fern', moistureLevel: 20, needsWatering: true },
+            { id: 3, name: 'Basil', moistureLevel: 60, needsWatering: false },
+            { id: 4, name: 'Orchid', moistureLevel: 15, needsWatering: true }
+        ];
+
+        // Function to display plant data
+        function displayPlants() {
+            const plantsContainer = document.getElementById('plants-container');
+            plantsContainer.innerHTML = ''; // Clear existing plants
+
+            plants.forEach(plant => {
+                const plantDiv = document.createElement('div');
+                plantDiv.classList.add('plant');
+
+                const plantName = document.createElement('div');
+                plantName.classList.add('plant-name');
+                plantName.textContent = plant.name;
+
+                const plantStatus = document.createElement('div');
+                plantStatus.classList.add('plant-status');
+                plantStatus.textContent = `Moisture: ${plant.moistureLevel}%`;
+
+                const plantNeedsWatering = document.createElement('div');
+                plantNeedsWatering.classList.add('plant-status');
+                plantNeedsWatering.textContent = plant.needsWatering ? 'Needs Watering' : 'Watered';
+
+                plantDiv.appendChild(plantName);
+                plantDiv.appendChild(plantStatus);
+                plantDiv.appendChild(plantNeedsWatering);
+
+                plantsContainer.appendChild(plantDiv);
+            });
+        }
+
+        // Simulate checking moisture levels (API behavior)
+        function checkMoistureLevels() {
+            const messageDiv = document.getElementById('message');
+            const plantsNeedingWater = plants.filter(plant => plant.needsWatering);
+
+            if (plantsNeedingWater.length > 0) {
+                messageDiv.textContent = `The following plants need watering: ${plantsNeedingWater.map(p => p.name).join(', ')}`;
+                messageDiv.className = 'message error';
+            } else {
+                messageDiv.textContent = 'All plants have sufficient moisture!';
+                messageDiv.className = 'message success';
+            }
+        }
+
+        // Simulate watering the plants (API behavior)
+        function waterPlants() {
+            const messageDiv = document.getElementById('message');
+            
+            plants.forEach(plant => {
+                if (plant.needsWatering) {
+                    plant.moistureLevel = 80;  // Reset moisture to a healthy level
+                    plant.needsWatering = false;
+                }
+            });
+
+            messageDiv.textContent = 'All plants have been watered!';
+            messageDiv.className = 'message success';
+            displayPlants();  // Re-render plant data after watering
+        }
+
+        // Add event listeners for buttons
+        document.getElementById('checkMoistureButton').addEventListener('click', checkMoistureLevels);
+        document.getElementById('waterPlantsButton').addEventListener('click', waterPlants);
+
+        // Initial display of plants
+        displayPlants();
+    </script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Counter</title>
+</head>
+<style>
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+.container {
+    text-align: center;
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.time-display {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.buttons button {
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+}
+
+.buttons button:hover {
+    background-color: #45a049;
+}
+
+.buttons button:active {
+    background-color: #367a37;
+}
+
+</style>
+<body>
+    <div class="container">
+        <h1>Time Counter</h1>
+        <div class="time-display" id="timeDisplay">
+            00:00
+        </div>
+        <div class="buttons">
+            <button onclick="incrementTime()">Increment</button>
+            <button onclick="decrementTime()">Decrement</button>
+            <button onclick="resetTime()">Reset</button>
+        </div>
+    </div>
+
+    <script>
+        let minutes = 0;
+let seconds = 0;
+
+function updateTimeDisplay() {
+    const timeDisplay = document.getElementById("timeDisplay");
+    timeDisplay.textContent = formatTime(minutes, seconds);
+}
+
+function formatTime(minutes, seconds) {
+    return `${padTime(minutes)}:${padTime(seconds)}`;
+}
+
+function padTime(time) {
+    return time < 10 ? '0' + time : time;
+}
+
+function incrementTime() {
+    seconds++;
+    if (seconds >= 60) {
+        seconds = 0;
+        minutes++;
+    }
+    updateTimeDisplay();
+}
+
+function decrementTime() {
+    if (seconds > 0) {
+        seconds--;
+    } else if (minutes > 0) {
+        seconds = 59;
+        minutes--;
+    }
+    updateTimeDisplay();
+}
+
+function resetTime() {
+    minutes = 0;
+    seconds = 0;
+    updateTimeDisplay();
+}
+
+    </script>
+</body>
+</html>
