@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            border:0;
+            box-sizing: border-box;
+        }
+        .header-part{
+            background-color:cornflowerblue;
+            height:120px;
+            padding:30px;
+        }
+        .header-part h1{
+            text-align: center;
+            text-shadow:01px 1px 1px gray;
+            color:#000000;
+        }
+        .header-part h2{
+            text-align: center;
+            text-shadow:01px 1px 1px gray;
+            text-decoration: underline;
+            color:#000000;
+        }
+        .mainsection{
+            background-color:bisque;
+            height:calc(100vh - 120px);
+        }
+        .section1{
+            text-align: center;
+            display:grid;
+            grid-template-columns: 150px 1fr;
+            gap:10px;
+        }
+        .section1 label{
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+<div class="header-part">
+    <h1>REPORT</h1>
+    <h2>Under The Section C.rCO 13</h2>
+</div>
+       <div class="mainsection">
+    <form>
+        <div class="section1">
+           <br><label for="casename">Case Title:</label>
+           <input type="text" id="casename" name="casename" required><br>
+           <label for="policestation">Police Station:</label>
+           <input type="text" id="policestation"  name="policestation" required><br>
+        </div>
+    </form>
+       </div>
+</div>
+</body>
+</html>
