@@ -3,27 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sticky Header</title>
+    <title>Three Column Layout</title>
     <style>
-        body { margin: 0; font-family: Arial, sans-serif; }
-        .header {
-            background: #4CAF50; color: white; padding: 15px; 
-            position: sticky; top: 0; z-index: 1000; 
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
         }
-        .content { padding: 20px; height: 2000px; background: #f4f4f4; }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            width: 90%;
+            max-width: 1400px;
+            padding: 20px;
+        }
+        .column {
+            background-color: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            font-size: 1.5rem;
+        }
     </style>
 </head>
 <body>
-
-    <div class="header">My Sticky Header</div>
-    <div class="content">
-        <h2>Scroll Down to See the Sticky Header</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <p>More content here...</p>
-        <p>More content here...</p>
-        <p>More content here...</p>
-        <p>More content here...</p>
+    <div class="container">
+        <div class="column">Column 1</div>
+        <div class="column">Column 2</div>
+        <div class="column">Column 3</div>
     </div>
-
 </body>
 </html>
