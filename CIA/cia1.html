@@ -3,28 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Three-Column Layout</title>
+    <title>Sticky Header</title>
     <style>
-        .container {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 10px;
-            text-align: center;
+        body { margin: 0; font-family: Arial, sans-serif; }
+        .header {
+            background: #4CAF50; color: white; padding: 15px; 
+            position: sticky; top: 0; z-index: 1000; 
         }
-        .box { padding: 20px; color: white; }
-        .header, .footer { grid-column: span 3; background: #3498db; }
-        .left { background: #2ecc71; }
-        .middle { background: #e74c3c; }
-        .right { background: #f1c40f; }
+        .content { padding: 20px; height: 2000px; background: #f4f4f4; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="box header">Header</div>
-        <div class="box left">Left</div>
-        <div class="box middle">Middle</div>
-        <div class="box right">Right</div>
-        <div class="box footer">Footer</div>
+
+    <div class="header">My Sticky Header</div>
+    <div class="content">
+        <h2>Scroll Down to See the Sticky Header</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p>More content here...</p>
+        <p>More content here...</p>
+        <p>More content here...</p>
+        <p>More content here...</p>
     </div>
+
 </body>
 </html>
