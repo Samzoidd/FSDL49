@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>CHECK NUMBER</h2>
+    <label for="name">Name:</label>
+    <input type="text" id="name" placeholder="Enter yor name"><br>
+    <button onclick="getvalue()">Submitt</button><br><br>
+    <p id="output"></p>
+    <script>
+      function getvalue(){
+        let inputvalue=document.getElementById("name").value;
+        document.getElementById("output").innerHTML="Hello "+ inputvalue;
+      }
+    </script>
+</body>
+</html>
