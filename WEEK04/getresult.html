@@ -4,18 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
-<body>
-    <h2>CHECK NUMBER</h2>
-    <label for="name">Name:</label>
-    <input type="text" id="name" placeholder="Enter yor name"><br>
-    <button onclick="getvalue()">Submitt</button><br><br>
-    <p id="output"></p>
+    <style>
+      h2 {
+        background-color: black;
+        color: aliceblue;
+        text-align: center;
+        padding: 10px;
+        margin: 0;
+      }
+
+      .allform {
+        margin: 20px;
+      }
+
+      label {
+        font-size: 16px;
+      }
+
+      input {
+        padding: 5px;
+        margin-top: 5px;
+        width: 200px;
+        display: block;
+      }
+
+      .submit {
+        background-color: green;
+        color: white;
+        margin-top: 10px;
+        padding: 8px 15px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+      }
+
+      .submit:hover {
+        background-color: darkgreen;
+      }
+
+      #output {
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 10px;
+      }
+    </style>
     <script>
-      function getvalue(){
-        let inputvalue=document.getElementById("name").value;
-        document.getElementById("output").innerHTML="Hello "+ inputvalue;
+      function getvalue() {
+        let inputvalue = document.getElementById("name").value;
+        document.getElementById("output").innerHTML = "Hello, " + inputvalue + "!";
       }
     </script>
+</head>
+<body>
+    <h2>Form </h2>
+    <div class="allthing">
+      <form class="allform">
+        <label for="name">Name:</label>
+        <input type="text" id="name" placeholder="Enter your name">
+      </form>
+      <button class="submit" onclick="getvalue()">Submit</button>
+      <p id="output"></p>
+    </div>
 </body>
 </html>
